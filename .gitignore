@@ -1,0 +1,12 @@
+.env
+db/*.db
+db/cookies.json
+db/browser_state.json
+db/browser_profile/
+exports/*
+!exports/README.md
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.DS_Store
+.claude/

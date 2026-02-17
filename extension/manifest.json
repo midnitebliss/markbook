@@ -1,0 +1,11 @@
+{
+  "manifest_version": 3,
+  "name": "link_squared",
+  "version": "1.0",
+  "description": "Extract your X/Twitter bookmarks to a local database",
+  "permissions": ["activeTab", "scripting"],
+  "host_permissions": ["https://x.com/*"],
+  "action": {
+    "default_popup": "popup.html"
+  }
+}
