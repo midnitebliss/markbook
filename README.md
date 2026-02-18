@@ -5,20 +5,17 @@ A local-first tool to extract, organize, and browse your X/Twitter bookmarks. Us
 ## How It Works
 
 ```
-┌──────────────┐     ┌──────────────┐     ┌──────────────┐     ┌──────────────┐
-│  X Bookmarks │────▶│   Chrome     │────▶│  Flask API   │────▶│   SQLite     │
-│  Page (DOM)  │     │  Extension   │     │  (port 7799) │     │   Database   │
-└──────────────┘     └──────────────┘     └──────────────┘     └──────┬───────┘
-                                                                      │
-                     ┌──────────────┐     ┌──────────────┐            │
-                     │  Claude API  │◀────│ categorize.py│◀───────────┤
-                     │  (optional)  │     │              │            │
-                     └──────────────┘     └──────────────┘            │
-                                                                      │
-                                          ┌──────────────┐            │
-                                          │  Streamlit   │◀───────────┘
-                                          │  Dashboard   │
-                                          └──────────────┘
+┌──────────────┐     ┌──────────────┐     ┌──────────────┐     ┌──────────────┐     ┌──────────────┐
+│  X Bookmarks │────▶│   Chrome     │────▶│  Flask API   │────▶│   SQLite     │────▶│ categorize.py│
+│  Page (DOM)  │     │  Extension   │     │  (port 7799) │     │   Database   │◀────│              │
+└──────────────┘     └──────────────┘     └──────────────┘     └──────┬───────┘     └──────┬──▲───┘
+                                                                      │                    │  │
+                                                                      │             sends  │  │ receives
+                                                                      │                    ▼  │
+                                          ┌──────────────┐            │             ┌──────────────┐
+                                          │  Streamlit   │◀───────────┘             │  Claude API  │
+                                          │  Dashboard   │                          │  (optional)  │
+                                          └──────────────┘                          └──────────────┘
 ```
 
 1. You open `x.com/i/bookmarks` in your browser (already logged in)
@@ -121,14 +118,14 @@ python categorize.py
 
 Sends uncategorized bookmarks to Claude in batches of 20 and assigns one of these categories:
 
-| Category | Category |
-|---|---|
-| Tech/AI | Design/Creative |
-| Business/Finance | Humor/Entertainment |
-| Science | News/Current Events |
-| Politics | Personal Development |
-| Career/Professional | Health/Fitness |
-| Education/Learning | Other |
+| Category            | Category             |
+| ------------------- | -------------------- |
+| Tech/AI             | Design/Creative      |
+| Business/Finance    | Humor/Entertainment  |
+| Science             | News/Current Events  |
+| Politics            | Personal Development |
+| Career/Professional | Health/Fitness       |
+| Education/Learning  | Other                |
 
 Costs roughly $0.05 for 175 bookmarks. Safe to re-run — skips already-categorized bookmarks.
 
