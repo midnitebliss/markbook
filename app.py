@@ -6,7 +6,7 @@ import json
 import pandas as pd
 import streamlit as st
 
-from lib.db import init_db, get_all, get_stats, get_categories, SORT_OPTIONS
+from lib.db import init_db, get_all, get_stats, get_categories, delete_bookmark, SORT_OPTIONS
 
 init_db()
 
@@ -105,14 +105,19 @@ for _, row in df.iterrows():
         text = row["text"] or ""
         st.markdown(text[:500] + ("..." if len(text) > 500 else ""))
 
-        # Engagement stats and link
+        # Engagement stats, link, and delete button
         likes = row["like_count"] or 0
         retweets = row["retweet_count"] or 0
         replies = row["reply_count"] or 0
-        st.caption(
+
+        foot_col1, foot_col2 = st.columns([5, 1])
+        foot_col1.caption(
             f"❤️ {likes:,}  🔁 {retweets:,}  💬 {replies:,}  "
             f"[Open on X]({row['url']})"
         )
+        if foot_col2.button("🗑️", key=f"del_{row['id']}", help="Delete this bookmark"):
+            delete_bookmark(int(row["id"]))
+            st.rerun()
 
         # Media thumbnails
         media = json.loads(row["media_urls"]) if row["media_urls"] else []

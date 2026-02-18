@@ -161,6 +161,13 @@ def set_category(conn, bookmark_id: int, category: str):
     )
 
 
+def delete_bookmark(bookmark_id: int):
+    conn = get_conn()
+    conn.execute("DELETE FROM bookmarks WHERE id = ?", (bookmark_id,))
+    conn.commit()
+    conn.close()
+
+
 def get_stats():
     conn = get_conn()
     stats = {}
