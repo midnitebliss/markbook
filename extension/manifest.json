@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "link_squared",
+  "name": "markbook",
   "version": "1.0",
   "description": "Extract your X/Twitter bookmarks to a local database",
   "permissions": ["activeTab", "scripting"],

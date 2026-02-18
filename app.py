@@ -11,8 +11,8 @@ from lib.db import init_db, get_all, get_stats, get_categories, delete_bookmark,
 init_db()
 
 # --- Page config ---
-st.set_page_config(page_title="link_squared", page_icon="🔗", layout="wide")
-st.title("link_squared")
+st.set_page_config(page_title="markbook", page_icon="🔗", layout="wide")
+st.title("markbook")
 st.caption("Your X/Twitter bookmarks in one place")
 
 # --- Stats ---

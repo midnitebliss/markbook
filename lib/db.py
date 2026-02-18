@@ -2,7 +2,7 @@ import sqlite3
 import json
 from pathlib import Path
 
-DB_PATH = Path(__file__).parent.parent / "db" / "link_squared.db"
+DB_PATH = Path(__file__).parent.parent / "db" / "markbook.db"
 
 SCHEMA = """
 CREATE TABLE IF NOT EXISTS bookmarks (

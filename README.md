@@ -1,4 +1,4 @@
-# link_squared
+# markbook
 
 A local-first tool to extract, organize, and browse your X/Twitter bookmarks. Uses a Chrome extension to pull bookmarks from your logged-in session, stores them in SQLite, and serves a Streamlit dashboard to search, filter, sort, and manage them. Optionally auto-categorizes bookmarks using Claude.
 
@@ -33,7 +33,7 @@ Everything stays on your machine. No data leaves your computer (except the optio
 ## Project Structure
 
 ```
-link_squared/
+markbook/
 ├── extension/             # Chrome/Chromium extension (Manifest V3)
 │   ├── manifest.json
 │   ├── popup.html         # Extension popup UI
@@ -93,7 +93,7 @@ python server.py
 Then in your browser:
 
 1. Navigate to [x.com/i/bookmarks](https://x.com/i/bookmarks)
-2. Click the **link_squared** extension icon
+2. Click the **markbook** extension icon
 3. Click **Fetch Bookmarks**
 4. Wait for it to scroll through all your bookmarks (progress shown in the popup)
 
@@ -134,7 +134,7 @@ Costs roughly $0.05 for 175 bookmarks. Safe to re-run — skips already-categori
 
 ## Data
 
-All data is stored locally in `db/link_squared.db` (SQLite). The database persists between runs — you only need to fetch bookmarks once. Re-fetching upserts by tweet ID, so no duplicates are created and engagement counts get updated.
+All data is stored locally in `db/markbook.db` (SQLite). The database persists between runs — you only need to fetch bookmarks once. Re-fetching upserts by tweet ID, so no duplicates are created and engagement counts get updated.
 
 ### Schema
 

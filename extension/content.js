@@ -90,7 +90,7 @@
         reply_count: getMetric("reply"),
       };
     } catch (e) {
-      console.warn("link_squared: failed to parse tweet", e);
+      console.warn("markbook: failed to parse tweet", e);
       return null;
     }
   }

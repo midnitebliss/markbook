@@ -34,6 +34,6 @@ def stats():
 
 
 if __name__ == "__main__":
-    print("link_squared server running on http://localhost:7799")
+    print("markbook server running on http://localhost:7799")
     print("Waiting for bookmarks from the extension...")
     app.run(port=7799, debug=False)
